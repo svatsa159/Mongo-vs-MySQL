@@ -1,5 +1,7 @@
 from flask import Flask, render_template, jsonify
 from flaskext.mysql import MySQL
+from bson import json_util
+
 from flask_cors import CORS, cross_origin
 app = Flask(__name__)
 cors = CORS(app)
@@ -19,8 +21,12 @@ data = cursor.fetchall()
 # print(data)
 @app.route('/hello')
 @cross_origin()
-def index_as_get():
+def mys():
     # return render_template('ind.ejs', data=data)
-    return jsonify(data)
+    return json_util.dumps(data)
+
+@app.route('/hola')
+@cross_origin()
+def mong():
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=6969)

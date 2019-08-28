@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 var url = "mongodb://localhost:27017/movies";
 var express=require('express');
 var app=express();
+var mysql = require('mysql');
+
 // app.set('view engine', 'ejs');
 // app.use(express.static(__dirname + '/static'));
 app.use(function (req, res, next) {
@@ -42,11 +44,26 @@ app.get('/hello',function(req,res){
 
 //Model
   var Movie = mongoose.model('Movie', movie);
-  Movie.find().lean().exec(function (err, moviess) {
+  Movie.find({},{_id:0}).lean().exec(function (err, moviess) {
       return res.end(JSON.stringify(moviess));
       // return res.render("ind.ejs",{moviess:moviess,i:1})
 
   });
 
 });
+app.get('/hola',function(req,res){
+  var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "diksha143",
+  database: "movies"
+});
+con.connect(function(err) {
+  if (err) throw err;
+  con.query("SELECT * FROM data", function (err, result, fields) {
+    if (err) throw err;
+    res.send(JSON.stringify(result));
+  });
+});
+})
 var server=app.listen(6069,function() {});
