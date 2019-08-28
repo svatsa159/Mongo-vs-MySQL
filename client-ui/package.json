@@ -1,0 +1,25 @@
+{
+  "name": "client-ui",
+  "version": "1.0.0",
+  "description": "Client UI for the Api",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/svatsa159/apis.git"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "Srivatsa Rampalli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/svatsa159/apis/issues"
+  },
+  "homepage": "https://github.com/svatsa159/apis#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
