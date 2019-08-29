@@ -28,84 +28,67 @@ font-family: 'Manjari', sans-serif;
     --font-size: 30px;
 }
 
-body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    background-color: #044277;
-    font-family: sans-serif;
+.app{
+  position: absolute;
+  width: 20vw;
+  height:20vh;
+  left: 15vw;
+  top:40vh;
+  text-align: center;;
+}
+.app1{
+  position: absolute;
+  width: 20vw;
+  height:20vh;
+  left: 65vw;
+  top:40vh;
+  text-align: center;;
 }
 
-.container {
-    perspective: 800px;
+.form-radio
+{
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+     display: inline-block;
+     position: relative;
+     background-color: #f1f1f1;
+     color: #666;
+     top: 10px;
+     height: 30px;
+     width: 30px;
+     border: 0;
+     border-radius: 50px;
+     cursor: pointer;
+     margin-right: 7px;
+     outline: none;
+}
+.form-radio:checked::before
+{
+     position: absolute;
+     font: 13px/1 'Open Sans', sans-serif;
+     left: 11px;
+     top: 7px;
+     content: '\02143';
+     transform: rotate(40deg);
+}
+.form-radio:hover
+{
+     background-color: #f7f7f7;
+}
+.form-radio:checked
+{
+     background-color: #f1f1f1;
+}
+label
+{
+     font-family: 'Manjari', sans-serif;
+     color: white;
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+     cursor: pointer;
 }
 
-.toggle {
-    position: relative;
-    border: solid var(--border-width) var(--accent);
-    border-radius: var(--border-radius);
-    transition: transform cubic-bezier(0, 0, 0.30, 2) .4s;
-    transform-style: preserve-3d;
-    perspective: 800px;
-}
-
-.toggle>input[type="radio"] {
-    display: none;
-}
-
-.toggle>#choice1:checked~#flap {
-    transform: rotateY(-180deg);
-}
-
-.toggle>#choice1:checked~#flap>.content {
-    transform: rotateY(-180deg);
-}
-
-.toggle>#choice2:checked~#flap {
-    transform: rotateY(0deg);
-}
-
-.toggle>label {
-    display: inline-block;
-    min-width: 170px;
-    padding: 30px;
-    font-size: var(--font-size);
-    text-align: center;
-    color: var(--accent);
-    cursor: pointer;
-}
-
-.toggle>label,
-.toggle>#flap {
-    font-weight: bold;
-    text-transform: capitalize;
-}
-
-.toggle>#flap {
-    position: absolute;
-    top: calc( 0px - var(--border-width));
-    left: 50%;
-    height: calc(100% + var(--border-width) * 2);
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: var(--font-size);
-    background-color: var(--accent);
-    border-top-right-radius: var(--border-radius);
-    border-bottom-right-radius: var(--border-radius);
-    transform-style: preserve-3d;
-    transform-origin: left;
-    transition: transform cubic-bezier(0.4, 0, 0.2, 1) .5s;
-}
-
-.toggle>#flap>.content {
-    color: #333;
-    transition: transform 0s linear .25s;
-    transform-style: preserve-3d;
-}
 .example_d {
 color: #04da97 !important;
 text-transform: uppercase;

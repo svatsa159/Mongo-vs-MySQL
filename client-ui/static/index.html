@@ -14,61 +14,22 @@
     <div class="Top">
       API UI
     </div>
-
-    <div class="container">
-
-        <form class="toggle">
-
-            <input type="radio" id="choice1" name="choice" value="creative">
-            <label for="choice1">Node + Mongo</label>
-
-            <input type="radio" id="choice2" name="choice" value="productive">
-            <label for="choice2">Python + MySQL</label>
-
-            <div id="flap"><span class="content">productive</span></div>
-
-        </form>
-
+    <div class="app">
+      <input type="radio" name="choice" value="one" id="radio-one" class="form-radio"><label for="radio-one">Node</label>
+      <input type="radio" name="choice" value="two" id="radio-two" class="form-radio"><label for="radio-two">Python</label>
     </div>
+    <div class="app1">
+      <input type="radio" name="choice1" value="one" id="radio1-one" class="form-radio"><label for="radio1-one">Mongo</label>
+      <input type="radio" name="choice1" value="two" id="radio1-two" class="form-radio"><label for="radio1-two">MySQL</label>
+    </div>
+
+
+
+
   <div class="button_cont" align="center"><a class="example_d" onclick="send()" target="_blank" rel="nofollow noopener" id="tt">Send</a></div>
   <div class="data">
     <h3>Result - <a id="name"></a><a id="time"></a></h3>
   </div>
   </body>
-  <script type="text/javascript">
-    const st = {};
 
-st.flap = document.querySelector('#flap');
-st.toggle = document.querySelector('.toggle');
-
-st.choice1 = document.querySelector('#choice1');
-st.choice2 = document.querySelector('#choice2');
-
-st.flap.addEventListener('transitionend', () => {
-
-  if (st.choice1.checked) {
-      st.toggle.style.transform = 'rotateY(-15deg)';
-      setTimeout(() => st.toggle.style.transform = '', 400);
-  } else {
-      st.toggle.style.transform = 'rotateY(15deg)';
-      setTimeout(() => st.toggle.style.transform = '', 400);
-  }
-
-})
-
-st.clickHandler = (e) => {
-
-  if (e.target.tagName === 'LABEL') {
-      setTimeout(() => {
-          st.flap.children[0].textContent = e.target.textContent;
-      }, 250);
-  }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  st.flap.children[0].textContent = st.choice2.nextElementSibling.textContent;
-});
-
-document.addEventListener('click', (e) => st.clickHandler(e));
-  </script>
 </html>
