@@ -46,7 +46,7 @@ function send(){
         success: function(res) {
           var request_time = new Date().getTime() - start_time;
           document.getElementById('name').innerHTML="Node + MySQL : ";
-          document.getElementById('time').innerHTML=request_time+"ms";// alert('csdc');
+          document.getElementById('time').innerHTML=request_time+"ms";
         }
     });
   }
@@ -57,11 +57,8 @@ function send(){
         success: function(res) {
           var request_time = new Date().getTime() - start_time;
           document.getElementById('name').innerHTML="Python + MySQL : ";
-          document.getElementById('time').innerHTML=request_time+"ms";  // alert('csdc');
+          document.getElementById('time').innerHTML=request_time+"ms";
         }
     });
-  }
-  else{
-    console.log("vv");
   }
 }

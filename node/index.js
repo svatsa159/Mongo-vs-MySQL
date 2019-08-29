@@ -1,6 +1,7 @@
 var express=require('express');
 var app=express();
 
+
 // CORS Headers
 app.use(function (req, res, next) {
     // Website you wish to allow to connect
@@ -16,11 +17,13 @@ app.use(function (req, res, next) {
     next();
 });
 
+
 // Define Mongoose Schema
 var mongoose = require('mongoose');
 var movie = new mongoose.Schema({
   title: String
 },{collection:'data'});
+
 
 // Mongo Route
 app.get('/mongo',function(req,res){
@@ -36,6 +39,7 @@ app.get('/mongo',function(req,res){
       return res.end(JSON.stringify(moviess));
   });
 });
+
 
 // MySQL Route
 app.get('/mysql',function(req,res){
@@ -55,6 +59,54 @@ app.get('/mysql',function(req,res){
   });
 });
 
+
+//Import Graphql
+var express_graphql = require('express-graphql');
+var { buildSchema } = require('graphql');
+
+const cors =require('cors');
+app.use(cors())
+//Graphql schema
+var schema = buildSchema(`
+    type Query {
+        cast: [String],
+        genres: [String],
+        year: Int,
+        title: String
+    }
+`);
+
+//Movies database
+var moviesk = function(){
+  var mysql = require('mysql');
+
+  var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "Welcome1*",
+  database: "movies"
+  });
+  console.log("GOT");
+  con.connect(function(err) {
+    if (err) throw err;
+    con.query("SELECT * FROM data", function (err, result, fields) {
+      if (err) throw err;
+      console.log("GOT");
+      return(JSON.stringify(result));
+    });
+  });
+};
+
+//Root Scheme
+var root={
+  data: moviesk
+};
+//Graphql Endpoint
+app.use('/graphql', express_graphql({
+    schema: schema,
+    rootValue: root,
+    graphiql : true
+}));
 
 // Server Start
 var server=app.listen(6069,function() {});
